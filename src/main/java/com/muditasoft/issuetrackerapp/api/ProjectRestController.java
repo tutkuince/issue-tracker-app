@@ -33,4 +33,9 @@ public class ProjectRestController {
     public ResponseEntity<ProjectDto> updateProject(@PathVariable(value = "id", required = true) Long id, @Valid @RequestBody ProjectDto project) {
         return ResponseEntity.ok(projectService.update(id, project));
     }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Boolean> delete(@PathVariable(value = "id", required = true) Long id) {
+        return ResponseEntity.ok(projectService.delete(id));
+    }
 }

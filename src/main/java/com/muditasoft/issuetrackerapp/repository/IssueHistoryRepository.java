@@ -1,8 +1,10 @@
 package com.muditasoft.issuetrackerapp.repository;
 
 import com.muditasoft.issuetrackerapp.model.IssueHistory;
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface IssueHistoryRepository extends CrudRepository<IssueHistory, Long> {
+import java.util.List;
 
+public interface IssueHistoryRepository extends JpaRepository<IssueHistory, Long> {
+    List<IssueHistory> getByIssueIdOrderById(Long id);
 }

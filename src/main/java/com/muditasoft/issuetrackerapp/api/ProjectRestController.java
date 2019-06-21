@@ -29,9 +29,14 @@ public class ProjectRestController {
         return ResponseEntity.ok(data);
     }
 
+    @PostMapping
+    public ResponseEntity<ProjectDto> createProject(@Valid @RequestBody ProjectDto projectDto) {
+        return ResponseEntity.ok(projectService.save(projectDto));
+    }
+
     @PutMapping("/{id}")
-    public ResponseEntity<ProjectDto> updateProject(@PathVariable(value = "id", required = true) Long id, @Valid @RequestBody ProjectDto project) {
-        return ResponseEntity.ok(projectService.update(id, project));
+    public ResponseEntity<ProjectDto> updateProject(@PathVariable(value = "id", required = true) Long id, @Valid @RequestBody ProjectDto projectDto) {
+        return ResponseEntity.ok(projectService.update(id, projectDto));
     }
 
     @DeleteMapping("/{id}")

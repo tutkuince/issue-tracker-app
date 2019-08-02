@@ -6,6 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @RestController
 @RequestMapping("/issues")
@@ -17,8 +18,13 @@ public class IssueRestController {
         this.issueService = issueService;
     }
 
+    @GetMapping
+    public ResponseEntity<List<IssueDto>> getAll() {
+        return ResponseEntity.ok(issueService.getAll());
+    }
+
     @GetMapping("/{id}")
-    public ResponseEntity<IssueDto> getById(@PathVariable(value = "id", required = true) Long id){
+    public ResponseEntity<IssueDto> getById(@PathVariable(value = "id") Long id){
         return ResponseEntity.ok(issueService.getById(id));
     }
 
